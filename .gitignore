@@ -1,0 +1,14 @@
+build
+CMakeCache.txt
+CMakeFiles
+Makefile
+cmake_install.cmake
+install_manifest.txt
+libsixelutils.so
+examples/build
+examples/lena512.bmp
+
+*.swp
+*.swo
+*.core
+*.ibc

@@ -1,0 +1,16 @@
+package sixel
+brief      = "libsixel bindings"
+version    = 0.0.1
+readme     = "README.md"
+sourceloc  = "git@github.com:Kaiepi/id-sixel.git"
+bugtracker = "https://github.com/Kaiepi/id-sixel/issues"
+modules    =
+    Sixel,
+	Sixel.Library,
+	Sixel.Symbols,
+	Sixel.Allocator,
+	Sixel.Dither,
+	Sixel.Output,
+	Sixel.Encoder,
+    Sixel.Decoder,
+    Sixel.Helpers

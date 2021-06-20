@@ -1,5 +1,5 @@
 cmake_minimum_required(VERSION 3.2)
-project(sixel VERSION 0.0.4 LANGUAGES C)
+project(sixel VERSION 0.0.5 LANGUAGES C)
 include(FindPkgConfig)
 
 add_library(sixelutils SHARED sixelutils.c)
@@ -29,4 +29,4 @@ execute_process(
     COMMAND         idris2 --libdir
     OUTPUT_VARIABLE IDRIS2_LIBDIR
     OUTPUT_STRIP_TRAILING_WHITESPACE)
-install(TARGETS sixelutils DESTINATION "${IDRIS2_LIBDIR}/sixel-0.0.4/lib/")
+install(TARGETS sixelutils DESTINATION "${IDRIS2_LIBDIR}/sixel-0.0.5/lib/")

@@ -1,6 +1,6 @@
 package sixel
 brief      = "libsixel bindings"
-version    = 0.0.4
+version    = 0.0.5
 readme     = "README.md"
 sourceloc  = "git@github.com:Kaiepi/id-sixel.git"
 bugtracker = "https://github.com/Kaiepi/id-sixel/issues"

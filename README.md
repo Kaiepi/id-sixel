@@ -24,7 +24,7 @@ $ cmake --install .
 
 ## Notes
 
-- Bindings match the level of support of those for Python. This implies
+- Bindings should match the level of support of those for Python. This implies
   `sixel_decode_raw` is NYI.
 - In general, bindings are named after a libsixel function stripped of any
   namespace, with the exception of constructors, which are given a

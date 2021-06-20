@@ -3,6 +3,14 @@ module Sixel.Symbols
 import Sixel.Library
 
 export
+%foreign (sixelutils "sixel_utils_version")
+version : String
+
+export
+%foreign (sixelutils "sixel_utils_abi_version")
+abiVersion : String
+
+export
 interface Show t => Symbolic t s | s where
   hint     : s -> String
   binding  : s -> t

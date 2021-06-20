@@ -49,6 +49,18 @@ sixel_utils_int_ptr_new(int value)
     return ptr;
 }
 
+const char *
+sixel_utils_version(void)
+{
+    return LIBSIXEL_VERSION;
+}
+
+const char *
+sixel_utils_abi_version(void)
+{
+    return LIBSIXEL_ABI_VERSION;
+}
+
 #define SYMBOL(t, k, v) \
 t \
 sixel_utils_##k(void) \

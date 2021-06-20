@@ -5,11 +5,6 @@ import Data.Buffer
 import Sixel.Library
 import Sixel.Symbols
 import Sixel.Allocator
-import Sixel.Frame
-
-public export
-LoadImageFn : Type
-LoadImageFn = PrimFrame -> (context : AnyPtr) -> PrimIO Int
 
 %foreign (sixel "sixel_helper_get_additional_message")
 sixel_helper_get_additional_message : String

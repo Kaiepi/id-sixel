@@ -1,0 +1,9 @@
+v0.0.1:
+    - Introduced bindings matching Python's level of support for libsixel.
+
+v0.0.2:
+    - Introduced version and abiVersion bindings for LIBSIXEL_VERSION and
+      LIBSIXEL_ABI_VERSION.
+
+v0.0.3:
+    - Introduced missing CHANGELOG.

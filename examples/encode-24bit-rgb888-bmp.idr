@@ -49,7 +49,7 @@ main = do
   height <- cast {to=Int} <$> getBits32 image 22
 
   Just (header, pixels) <- splitBuffer image offset
-    | Nothing => putStrLn ("Could not extract pixel data from " ++ filename)
+    | Nothing => cleanup [image] >> putStrLn ("Could not extract pixel data from " ++ filename)
   swap pixels
 
   Right output <- MkOutput writer {priv=getHandle stdout}

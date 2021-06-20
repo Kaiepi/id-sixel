@@ -1,6 +1,6 @@
 # Sixel
 
-Total Idris 2 bindings for [libsixel](https://github.com/saitoha/libsixel/).
+Idris 2 bindings for [libsixel](https://github.com/saitoha/libsixel/).
 
 Refer to `examples/` for usage.
 

@@ -1,6 +1,5 @@
 module Main
 
-import Data.Nat
 import Data.Buffer
 import System.File
 

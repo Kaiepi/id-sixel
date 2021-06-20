@@ -1,7 +1,5 @@
 module Main
 
-import Data.Fin
-import Data.List
 import System
 
 import Sixel

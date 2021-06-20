@@ -7,6 +7,18 @@ import System.File
 import Sixel
 import Sixel.Library
 
+%foreign (c "fwrite")
+fwrite : (buf : AnyPtr) -> (size : Int) -> (elems : Int) -> (file : AnyPtr) -> PrimIO Int
+
+||| Writer callback for sixel_output_new.
+writer : (buf : AnyPtr) -> (size : Int) -> (priv : AnyPtr) -> PrimIO Int
+writer buf size priv = fwrite buf 1 size priv
+
+||| Get the FILE* handle of an Idris file.
+getHandle : File -> FilePtr
+getHandle (FHandle fh) = fh
+
+||| Swaps the endianness of a buffer.
 swap : Buffer -> IO ()
 swap buf = if !(getByte buf 7) == 0xFF then pure () else do
   size <- rawSize buf
@@ -22,20 +34,13 @@ swap buf = if !(getByte buf 7) == 0xFF then pure () else do
                setBits8 buf start last
                go buf (start + 1) (end - 1)
 
-%foreign (c "fwrite")
-fwrite : AnyPtr -> Int -> Int -> AnyPtr -> PrimIO Int
-
-writer : AnyPtr -> Int -> AnyPtr -> PrimIO Int
-writer buf size priv = fwrite buf 1 size priv
-
-getHandle : File -> FilePtr
-getHandle (FHandle fh) = fh
-
+||| Frees unmanaged memory for main.
 cleanup : List Buffer -> IO ()
 cleanup bufs = do
   _ <-  traverse freeBuffer bufs
   pure ()
 
+||| File input.
 filename : String
 filename = "sample_1920×1280.bmp"
 

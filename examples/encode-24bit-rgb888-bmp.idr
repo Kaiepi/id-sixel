@@ -31,6 +31,11 @@ writer buf size priv = fwrite buf 1 size priv
 getHandle : File -> FilePtr
 getHandle (FHandle fh) = fh
 
+cleanup : List Buffer -> IO ()
+cleanup bufs = do
+  _ <-  traverse freeBuffer bufs
+  pure ()
+
 filename : String
 filename = "sample_1920×1280.bmp"
 
@@ -48,14 +53,12 @@ main = do
   swap pixels
 
   Right output <- MkOutput writer {priv=getHandle stdout}
-    | Left error => putStrLn getAdditionalMessage
+    | Left error => cleanup [pixels, header, image] >> putStrLn getAdditionalMessage
   Right dither <- MkDither {ncolors=256}
-    | Left error => putStrLn getAdditionalMessage
+    | Left error => cleanup [pixels, header, image] >> putStrLn getAdditionalMessage
   Right _ <- initialize dither pixels width height PixelFormatRgb888 LargeNorm RepAverageColors QualityFull
-    | Left error => putStrLn getAdditionalMessage
+    | Left error => cleanup [pixels, header, image] >> putStrLn getAdditionalMessage
   Right _ <- encode pixels width height 1 dither output
-    | Left error => putStrLn getAdditionalMessage
+    | Left error => cleanup [pixels, header, image] >> putStrLn getAdditionalMessage
 
-  freeBuffer pixels
-  freeBuffer header
-  freeBuffer image
+  cleanup [pixels, header, image]
